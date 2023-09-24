@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>Defender.NotificationService.Domain</RootNamespace>
+        <AssemblyName>Defender.NotificationService.Domain</AssemblyName>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Defender.Common" Version="1.1.27" />
+      <PackageReference Include="MediatR" Version="12.1.1" />
+      <PackageReference Include="MongoDB.Bson" Version="2.21.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Defender.Common\src\Defender.Common\Defender.Common.csproj" />
+    </ItemGroup>
+
+</Project>
