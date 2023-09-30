@@ -34,17 +34,19 @@ public sealed class SendPureEmailCommandValidator : AbstractValidator<SendPureEm
 
 public sealed class SendPureEmailCommandHandler : IRequestHandler<SendPureEmailCommand, NotificationResponse>
 {
-    private readonly IEmailService _emailService;
+    private readonly INotificationService _notificationService;
 
     public SendPureEmailCommandHandler(
-        IEmailService emailService
+        INotificationService notificationService
         )
     {
-        _emailService = emailService;
+        _notificationService = notificationService;
     }
 
     public async Task<NotificationResponse> Handle(SendPureEmailCommand request, CancellationToken cancellationToken)
     {
-        return await _emailService.SendEmailAsync(request.RecipientEmail, request.Subject, request.Body);
+        var notificationRequest = NotificationRequest.Email(request.RecipientEmail, request.Subject, request.Body);
+
+        return await _notificationService.SendNotificationAsync(notificationRequest);
     }
 }

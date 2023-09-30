@@ -2,7 +2,7 @@
 
 namespace Defender.NotificationService.Application.Common.Interfaces;
 
-public interface IEmailService
+public interface INotificationService
 {
-    Task<string> SendEmailAsync(NotificationRequest request);
+    Task<NotificationResponse> SendNotificationAsync(NotificationRequest request);
 }

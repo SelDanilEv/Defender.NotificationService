@@ -10,7 +10,7 @@ using Defender.Common.Pagination;
 using Defender.NotificationService.Application.Modules.Monitoring.Queries;
 using Defender.NotificationService.Domain.Entities;
 
-namespace Defender.NotificationService.WebUI.Controllers.V1;
+namespace Defender.NotificationService.WebApi.Controllers.V1;
 
 public class MonitoringController : BaseApiController
 {

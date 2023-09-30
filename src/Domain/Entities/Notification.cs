@@ -7,6 +7,7 @@ namespace Defender.NotificationService.Domain.Entities;
 
 public class Notification : IBaseModel
 {
+
     public Guid Id { get; set; }
 
     [BsonRepresentation(BsonType.String)]
@@ -17,8 +18,15 @@ public class Notification : IBaseModel
     public string Recipient { get; set; }
     public string Header { get; set; }
     public string Message { get; set; }
+    public DateTime CreatedDate { get; set; }
 
     public string ExternalNotificationId { get; set; }
+
+
+    public Notification()
+    {
+        CreatedDate = DateTime.UtcNow;
+    }
 
     public static Notification InitEmailNotificaton()
     {
@@ -38,9 +46,9 @@ public class Notification : IBaseModel
         };
     }
 
-    public Notification FillNotificatonData(string email, string subject, string body)
+    public Notification FillNotificatonData(string recipient, string subject, string body)
     {
-        this.Recipient = email;
+        this.Recipient = recipient;
         this.Header = subject;
         this.Message = body;
 

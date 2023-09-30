@@ -19,11 +19,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
-namespace Defender.NotificationService.WebUI;
+namespace Defender.NotificationService.WebApi;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddWebUIServices(
+    public static IServiceCollection AddWebApiServices(
         this IServiceCollection services,
         IWebHostEnvironment environment,
         IConfiguration configuration)

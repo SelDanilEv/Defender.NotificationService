@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Defender.Common.Interfaces;
 
-namespace Defender.NotificationService.WebUI.Controllers.V1;
+namespace Defender.NotificationService.WebApi.Controllers.V1;
 
 public class HomeController : BaseApiController
 {

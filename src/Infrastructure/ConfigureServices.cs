@@ -39,6 +39,7 @@ public static class ConfigureServices
 
     private static void RegisterServices(IServiceCollection services)
     {
+        services.AddTransient<INotificationService, Services.NotificationService>();
         services.AddTransient<IEmailService, SendinBlueEmailService>();
         services.AddTransient<IMonitoringService, MonitoringService>();
     }

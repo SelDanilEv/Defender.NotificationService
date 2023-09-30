@@ -3,7 +3,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Defender.NotificationService.WebUI.Controllers;
+namespace Defender.NotificationService.WebApi.Controllers;
 
 [Route("api/[controller]")]
 public class BaseApiController : ControllerBase
