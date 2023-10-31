@@ -38,9 +38,7 @@ public sealed class GetNotificationsByRecipientQueryHandler : IRequestHandler<Ge
 
     public async Task<PagedResult<Notification>> Handle(GetNotificationsByRecipientQuery request, CancellationToken cancellationToken)
     {
-        var paginationSettings = PaginationSettings<Notification>.FromPaginationRequest(request);
-
-        var notifications = await _monitoringService.GetNotificationsByRecipientAsync(request.Recipient, paginationSettings);
+        var notifications = await _monitoringService.GetNotificationsByRecipientAsync(request, request.Recipient);
 
         return notifications;
     }

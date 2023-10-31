@@ -25,8 +25,10 @@ public class MonitoringService : IMonitoringService
         return await _notificationRepository.GetNotificationsByIdAsync(notificationId);
     }
 
-    public async Task<PagedResult<Notification>> GetNotificationsByRecipientAsync(string recipient, PaginationSettings<Notification> settings)
+    public async Task<PagedResult<Notification>> GetNotificationsByRecipientAsync(PaginationRequest paginationRequest, string recipient)
     {
+        var settings = PaginationSettings<Notification>.FromPaginationRequest(paginationRequest);
+
         var filterRequest = FindModelRequest<Notification>.Init(x => x.Recipient, recipient);
 
         settings.AddFilter(filterRequest);

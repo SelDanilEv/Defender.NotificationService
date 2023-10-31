@@ -6,5 +6,5 @@ namespace Defender.NotificationService.Application.Common.Interfaces;
 public interface IMonitoringService
 {
     Task<Notification> GetNotificationsByIdAsync(Guid notificationId);
-    Task<PagedResult<Notification>> GetNotificationsByRecipientAsync(string recipient, PaginationSettings<Notification> settings);
+    Task<PagedResult<Notification>> GetNotificationsByRecipientAsync(PaginationRequest settings,string recipient );
 }
