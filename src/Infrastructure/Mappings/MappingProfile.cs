@@ -1,8 +1,8 @@
-using AutoMapper;
+using Defender.Common.Mapping;
 
 namespace Defender.NotificationService.Infrastructure.Mappings;
 
-public class MappingProfile : Profile
+public class MappingProfile : BaseMappingProfile
 {
     public MappingProfile()
     {
