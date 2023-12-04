@@ -9,8 +9,6 @@ public static class ServiceOptionsExtensions
 {
     public static IServiceCollection AddApplicationOptions(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddCommonOptions(configuration);
-
         services.Configure<SendinBlueOptions>(configuration.GetSection(nameof(SendinBlueOptions)));
 
         services.Configure<SenderInfoOptions>(configuration.GetSection(nameof(SenderInfoOptions)));

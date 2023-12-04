@@ -51,9 +51,9 @@ public static class ConfigureServices
 
     private static void RegisterApiClients(IServiceCollection services, IConfiguration configuration)
     {
-        services.PostConfigure<SendinBlueOptions>(option =>
+        services.PostConfigure<SendinBlueOptions>(async option =>
         {
-            option.ApiKey = LocalSecretsHelper.GetSecret(LocalSecret.EmailApiKey);
+            option.ApiKey = await LocalSecretsHelper.GetSecretAsync(LocalSecret.EmailApiKey);
         });
 
         services.AddHttpClient<ISendinBlueClient, SendinBlueClient>(nameof(SendinBlueClient), (serviceProvider, client) =>

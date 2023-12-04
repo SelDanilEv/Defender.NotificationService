@@ -5,13 +5,13 @@ namespace Defender.NotificationService.Infrastructure.Helpers.LocalSecretHelper;
 
 public class LocalSecretsHelper
 {
-    public static string GetSecret(Secret secret)
+    public static async Task<string> GetSecretAsync(Secret secret)
     {
-        return SecretsHelper.GetSecret(secret);
+        return await SecretsHelper.GetSecretAsync(secret);
     }
 
-    public static string GetSecret(LocalSecret secret)
+    public static async Task<string> GetSecretAsync(LocalSecret secret)
     {
-        return SecretsHelper.GetSecret(secret.ToString());
+        return await SecretsHelper.GetSecretAsync(secret.ToString());
     }
 }

@@ -41,7 +41,7 @@ public class GetConfigurationQueryHandler : IRequestHandler<GetConfigurationQuer
                 foreach (Secret secret
                     in (Secret[])Enum.GetValues(typeof(Secret)))
                 {
-                    result.Add(secret.ToString(), SecretsHelper.GetSecret(secret));
+                    result.Add(secret.ToString(), await SecretsHelper.GetSecretAsync(secret));
                 }
                 break;
         }

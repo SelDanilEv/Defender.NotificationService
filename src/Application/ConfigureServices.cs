@@ -15,10 +15,6 @@ public static class ConfigureServices
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
-        services.AddCommonPipelines();
-
-        services.AddApplicationOptions(configuration);
-
         return services;
     }
 }
