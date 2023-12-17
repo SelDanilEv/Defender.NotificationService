@@ -1,6 +1,5 @@
-using AutoMapper;
+using Defender.Common.DB.Pagination;
 using Defender.Common.Mapping;
-using Defender.Common.Pagination;
 using Defender.NotificationService.Application.Models;
 using Defender.NotificationService.Domain.Entities;
 

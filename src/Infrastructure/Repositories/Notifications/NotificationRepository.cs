@@ -1,14 +1,14 @@
 ﻿using Defender.Common.Configuration.Options;
-using Defender.Common.Models;
-using Defender.Common.Pagination;
-using Defender.Common.Repositories;
+using Defender.Common.DB.Model;
+using Defender.Common.DB.Pagination;
+using Defender.Common.DB.Repositories;
 using Defender.NotificationService.Application.Common.Interfaces.Repositories;
 using Defender.NotificationService.Domain.Entities;
 using Microsoft.Extensions.Options;
 
 namespace Defender.NotificationService.Infrastructure.Repositories.Notifications;
 
-public class NotificationRepository : MongoRepository<Notification>, INotificationRepository
+public class NotificationRepository : BaseMongoRepository<Notification>, INotificationRepository
 {
     public NotificationRepository(IOptions<MongoDbOptions> mongoOption) : base(mongoOption.Value)
     {

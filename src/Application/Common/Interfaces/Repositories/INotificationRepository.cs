@@ -1,5 +1,5 @@
-﻿using Defender.Common.Models;
-using Defender.Common.Pagination;
+﻿using Defender.Common.DB.Model;
+using Defender.Common.DB.Pagination;
 using Defender.NotificationService.Domain.Entities;
 
 namespace Defender.NotificationService.Application.Common.Interfaces.Repositories;

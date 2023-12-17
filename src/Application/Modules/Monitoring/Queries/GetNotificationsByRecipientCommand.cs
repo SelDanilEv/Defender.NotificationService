@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Defender.Common.DB.Pagination;
 using Defender.Common.Errors;
-using Defender.Common.Pagination;
 using Defender.NotificationService.Application.Common.Interfaces;
 using Defender.NotificationService.Domain.Entities;
 using FluentValidation;

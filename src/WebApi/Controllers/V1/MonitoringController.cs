@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Defender.NotificationService.Application.Models;
 using Defender.Common.Attributes;
 using Defender.Common.Models;
-using Defender.Common.Pagination;
 using Defender.NotificationService.Application.Modules.Monitoring.Queries;
 using Defender.NotificationService.Domain.Entities;
+using Defender.Common.DB.Pagination;
 
 namespace Defender.NotificationService.WebApi.Controllers.V1;
 

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using Defender.Common.DB.Model;
 using Defender.Common.Errors;
 using Defender.Common.Exceptions;
-using Defender.Common.Models;
 using Defender.NotificationService.Application.Common.Interfaces;
 using Defender.NotificationService.Application.Common.Interfaces.Repositories;
 using Defender.NotificationService.Application.Models;

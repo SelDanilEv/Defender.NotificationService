@@ -2,12 +2,10 @@
 using System.Net.Http;
 using System.Text;
 using System.Text.Json.Serialization;
-using Defender.Common.Accessors;
 using Defender.Common.Errors;
 using Defender.Common.Exceptions;
 using Defender.Common.Exstension;
 using Defender.Common.Helpers;
-using Defender.Common.Interfaces;
 using Defender.NotificationService.Application.Configuration.Exstension;
 using FluentValidation.AspNetCore;
 using Hellang.Middleware.ProblemDetails;
@@ -20,6 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using ProblemDetailsOptions = Hellang.Middleware.ProblemDetails.ProblemDetailsOptions;
 
 namespace Defender.NotificationService.WebApi;
 
@@ -125,7 +124,7 @@ public static class ConfigureServices
 
     private static void ConfigureProblemDetails(ProblemDetailsOptions options, IWebHostEnvironment environment)
     {
-        options.IncludeExceptionDetails = (ctx, ex) => environment.IsEnvironment("Development") || environment.IsEnvironment("DockerDev");
+        options.IncludeExceptionDetails = (ctx, ex) => environment.IsLocalOrDevelopment();
 
         options.Map<ValidationException>(exception =>
         {
