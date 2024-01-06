@@ -123,4 +123,10 @@
   <data name="EmailVerification_Subject" xml:space="preserve">
     <value>Email verification</value>
   </data>
+  <data name="VerificationCode_Body" xml:space="preserve">
+    <value>Verification code</value>
+  </data>
+  <data name="VerificationCode_Subject" xml:space="preserve">
+    <value>Here is your verification code: {0}</value>
+  </data>
 </root>

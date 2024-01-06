@@ -77,5 +77,23 @@ namespace Defender.NotificationService.Application.Resources {
                 return ResourceManager.GetString("EmailVerification_Subject", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verification code.
+        /// </summary>
+        internal static string VerificationCode_Body {
+            get {
+                return ResourceManager.GetString("VerificationCode_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here is your verification code: {0}.
+        /// </summary>
+        internal static string VerificationCode_Subject {
+            get {
+                return ResourceManager.GetString("VerificationCode_Subject", resourceCulture);
+            }
+        }
     }
 }

@@ -6,39 +6,36 @@ using MediatR;
 
 namespace Defender.NotificationService.Application.Modules.Notifications.Commands;
 
-public record SendVerificationEmailCommand : IRequest<NotificationResponse>
+public record SendVerificationCodeCommand : IRequest<NotificationResponse>
 {
     public string RecipientEmail { get; set; }
-    public string VerificationLink { get; set; }
+    public int Code { get; set; }
 };
 
-public sealed class SendVerificationEmailCommandValidator : AbstractValidator<SendVerificationEmailCommand>
+public sealed class SendVerificationCodeCommandValidator : AbstractValidator<SendVerificationCodeCommand>
 {
-    public SendVerificationEmailCommandValidator()
+    public SendVerificationCodeCommandValidator()
     {
         RuleFor(s => s.RecipientEmail)
                   .NotEmpty().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_EmptyRecipient))
                   .EmailAddress().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_InvalidEmail));
-
-        RuleFor(s => s.VerificationLink)
-                  .NotEmpty().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_EmptyValidationLink));
     }
 }
 
-public sealed class SendVerificationEmailCommandHandler : IRequestHandler<SendVerificationEmailCommand, NotificationResponse>
+public sealed class SendVerificationCodeCommandHandler : IRequestHandler<SendVerificationCodeCommand, NotificationResponse>
 {
     private readonly INotificationService _notificationService;
 
-    public SendVerificationEmailCommandHandler(
+    public SendVerificationCodeCommandHandler(
         INotificationService notificationService
         )
     {
         _notificationService = notificationService;
     }
 
-    public async Task<NotificationResponse> Handle(SendVerificationEmailCommand request, CancellationToken cancellationToken)
+    public async Task<NotificationResponse> Handle(SendVerificationCodeCommand request, CancellationToken cancellationToken)
     {
-        var notificationRequest = NotificationRequest.VerificationEmail(request.RecipientEmail, request.VerificationLink);
+        var notificationRequest = NotificationRequest.VerificationCode(request.RecipientEmail, request.Code);
 
         return await _notificationService.SendNotificationAsync(notificationRequest);
     }

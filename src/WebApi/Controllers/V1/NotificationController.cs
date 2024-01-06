@@ -26,12 +26,21 @@ public class NotificationController : BaseApiController
         return await ProcessApiCallAsync<SendPureEmailCommand, NotificationResponse>(command);
     }
 
-    [HttpPost("send/verification-email")]
+    [HttpPost("send/email-verification")]
     [Auth(Roles.Admin)]
     [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-    public async Task<NotificationResponse> SendVerificationMessageAsync([FromBody] SendVerificationEmailCommand command)
+    public async Task<NotificationResponse> SendVerificationMessageAsync([FromBody] SendEmailVerificationCommand command)
     {
-        return await ProcessApiCallAsync<SendVerificationEmailCommand, NotificationResponse>(command);
+        return await ProcessApiCallAsync<SendEmailVerificationCommand, NotificationResponse>(command);
+    }
+
+    [HttpPost("send/verification-code")]
+    [Auth(Roles.Admin)]
+    [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+    public async Task<NotificationResponse> SendVerificationCodeAsync([FromBody] SendVerificationCodeCommand command)
+    {
+        return await ProcessApiCallAsync<SendVerificationCodeCommand, NotificationResponse>(command);
     }
 }

@@ -27,12 +27,20 @@ public record NotificationRequest
             body);
     }
 
-    public static NotificationRequest VerificationEmail(string? recipient, string? verificationUrl)
+    public static NotificationRequest EmailVerification(string? recipient, string? verificationUrl)
     {
         return Email(
                 recipient,
                 Notifications.EmailVerification_Subject,
                 string.Format(Notifications.EmailVerification_Body, verificationUrl));
+    }
+
+    public static NotificationRequest VerificationCode(string? recipient, int verificationCode)
+    {
+        return Email(
+                recipient,
+                Notifications.VerificationCode_Subject,
+                string.Format(Notifications.VerificationCode_Body, verificationCode));
     }
 
 }

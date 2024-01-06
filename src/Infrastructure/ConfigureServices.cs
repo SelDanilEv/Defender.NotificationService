@@ -21,35 +21,39 @@ public static class ConfigureServices
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-        RegisterServices(services);
-
-        RegisterRepositories(services);
-
-        RegisterApiClients(services, configuration);
-
-        RegisterClientWrappers(services);
+        services
+            .RegisterServices()
+            .RegisterRepositories()
+            .RegisterApiClients(configuration)
+            .RegisterClientWrappers();
 
         return services;
     }
 
-    private static void RegisterClientWrappers(IServiceCollection services)
+    private static IServiceCollection RegisterClientWrappers(this IServiceCollection services)
     {
         services.AddTransient<IEmailServiceWrapper, SendinBlueServiceWrapper>();
+
+        return services;
     }
 
-    private static void RegisterServices(IServiceCollection services)
+    private static IServiceCollection RegisterServices(this IServiceCollection services)
     {
         services.AddTransient<INotificationService, Services.NotificationService>();
         services.AddTransient<IEmailService, SendinBlueEmailService>();
         services.AddTransient<IMonitoringService, MonitoringService>();
+
+        return services;
     }
 
-    private static void RegisterRepositories(IServiceCollection services)
+    private static IServiceCollection RegisterRepositories(this IServiceCollection services)
     {
         services.AddSingleton<INotificationRepository, NotificationRepository>();
+
+        return services;
     }
 
-    private static void RegisterApiClients(IServiceCollection services, IConfiguration configuration)
+    private static IServiceCollection RegisterApiClients(this IServiceCollection services, IConfiguration configuration)
     {
         services.PostConfigure<SendinBlueOptions>(async option =>
         {
@@ -67,6 +71,8 @@ public static class ConfigureServices
                     .Accept
                     .Add(new MediaTypeWithQualityHeaderValue("application/json"));
         });
+
+        return services;
     }
 
 }
