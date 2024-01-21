@@ -79,7 +79,7 @@ namespace Defender.NotificationService.Application.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Verification code.
+        ///   Looks up a localized string similar to Here is your verification code: {0}..
         /// </summary>
         internal static string VerificationCode_Body {
             get {
@@ -88,7 +88,7 @@ namespace Defender.NotificationService.Application.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Here is your verification code: {0}.
+        ///   Looks up a localized string similar to Verification code.
         /// </summary>
         internal static string VerificationCode_Subject {
             get {

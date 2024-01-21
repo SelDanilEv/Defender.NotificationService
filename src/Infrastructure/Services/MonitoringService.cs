@@ -29,9 +29,11 @@ public class MonitoringService : IMonitoringService
     {
         var settings = PaginationSettings<Notification>.FromPaginationRequest(paginationRequest);
 
-        var filterRequest = FindModelRequest<Notification>.Init(x => x.Recipient, recipient);
-
-        settings.AddFilter(filterRequest);
+        var filterRequest = FindModelRequest<Notification>
+            .Init(x => x.Recipient, recipient)
+            .Sort(x=> x.CreatedDate, SortType.Desc);
+        
+        settings.SetupFindOptions(filterRequest);
 
         return await _notificationRepository.GetNotificationsByRecipientAsync(settings);
     }
