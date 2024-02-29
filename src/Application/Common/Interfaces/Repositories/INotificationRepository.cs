@@ -7,7 +7,7 @@ namespace Defender.NotificationService.Application.Common.Interfaces.Repositorie
 public interface INotificationRepository
 {
     Task<Notification> GetNotificationsByIdAsync(Guid notificationId);
-    Task<PagedResult<Notification>> GetNotificationsByRecipientAsync(PaginationSettings<Notification> settings);
+    Task<PagedResult<Notification>> GetNotificationsAsync(PaginationSettings<Notification> settings);
     Task<Notification> CreateNotificationAsync(Notification notification);
     Task UpdateNotificationAsync(Guid id, UpdateModelRequest<Notification> updateModelRequest);
 }

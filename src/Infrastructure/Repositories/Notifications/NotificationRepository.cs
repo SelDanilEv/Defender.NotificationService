@@ -19,7 +19,7 @@ public class NotificationRepository : BaseMongoRepository<Notification>, INotifi
         return await GetItemAsync(notificationId);
     }
 
-    public async Task<PagedResult<Notification>> GetNotificationsByRecipientAsync(PaginationSettings<Notification> settings)
+    public async Task<PagedResult<Notification>> GetNotificationsAsync(PaginationSettings<Notification> settings)
     {
         return await GetItemsAsync(settings);
     }

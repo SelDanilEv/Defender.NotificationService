@@ -25,9 +25,12 @@ public class MonitoringService : IMonitoringService
         return await _notificationRepository.GetNotificationsByIdAsync(notificationId);
     }
 
-    public async Task<PagedResult<Notification>> GetNotificationsByRecipientAsync(PaginationRequest paginationRequest, string recipient)
+    public async Task<PagedResult<Notification>> GetNotificationsByRecipientAsync(
+        PaginationRequest paginationRequest, 
+        string recipient)
     {
-        var settings = PaginationSettings<Notification>.FromPaginationRequest(paginationRequest);
+        var settings = PaginationSettings<Notification>
+            .FromPaginationRequest(paginationRequest);
 
         var filterRequest = FindModelRequest<Notification>
             .Init(x => x.Recipient, recipient)
@@ -35,6 +38,6 @@ public class MonitoringService : IMonitoringService
         
         settings.SetupFindOptions(filterRequest);
 
-        return await _notificationRepository.GetNotificationsByRecipientAsync(settings);
+        return await _notificationRepository.GetNotificationsAsync(settings);
     }
 }
