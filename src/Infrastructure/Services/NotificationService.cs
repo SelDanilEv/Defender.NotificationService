@@ -52,12 +52,12 @@ public class NotificationService : INotificationService
             }
 
             updateRequest
-                .UpdateField(x => x.ExternalNotificationId, externalNotificationId)
-                .UpdateField(x => x.Status, NotificationStatus.Sent);
+                .Set(x => x.ExternalNotificationId, externalNotificationId)
+                .Set(x => x.Status, NotificationStatus.Sent);
         }
         catch (Exception ex)
         {
-            updateRequest.UpdateField(x => x.Status, NotificationStatus.Failed);
+            updateRequest.Set(x => x.Status, NotificationStatus.Failed);
 
             throw new ServiceException(ErrorCode.ES_SendinBlueIssue, ex);
         }

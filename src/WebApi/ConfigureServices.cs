@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Text;
 using System.Text.Json.Serialization;
+using Defender.Common.Enums;
 using Defender.Common.Errors;
 using Defender.Common.Exceptions;
 using Defender.Common.Exstension;
@@ -63,7 +64,7 @@ public static class ConfigureServices
         {
             auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(async options =>
+        }).AddJwtBearer(options =>
         {
             options.RequireHttpsMetadata = false;
             options.SaveToken = true;
@@ -74,7 +75,7 @@ public static class ConfigureServices
                 ValidIssuer = configuration["JwtTokenIssuer"],
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(await SecretsHelper.GetSecretAsync(Common.Enums.Secret.JwtSecret)))
+                    Encoding.UTF8.GetBytes(SecretsHelper.GetSecretAsync(Secret.JwtSecret).Result))
             };
         });
 
