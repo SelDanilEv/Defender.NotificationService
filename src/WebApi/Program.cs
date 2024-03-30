@@ -16,8 +16,9 @@ var logger = new LoggerConfiguration()
   .Enrich.FromLogContext()
   .CreateLogger();
 
-builder.Logging.ClearProviders();
-builder.Logging.AddSerilog(logger);
+builder.Logging.ClearProviders()
+    .AddSerilog(logger)
+    .AddConsole();
 
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 builder.Services.AddWebApiServices(builder.Environment, builder.Configuration);
@@ -35,6 +36,9 @@ if (builder.Environment.IsLocalOrDevelopment())
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
     });
+
+    app.UseDefaultFiles();
+    app.UseStaticFiles();
 }
 else
 {
