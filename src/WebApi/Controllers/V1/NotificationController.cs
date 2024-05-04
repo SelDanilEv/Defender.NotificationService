@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Defender.NotificationService.Application.Models;
 using Defender.Common.Attributes;
-using Defender.Common.Models;
+using Defender.Common.Consts;
 using Defender.NotificationService.Application.Modules.Notifications.Commands;
 
 namespace Defender.NotificationService.WebApi.Controllers.V1;
 
 public class NotificationController : BaseApiController
 {
-    public NotificationController(IMediator mediator, IMapper mapper) 
+    public NotificationController(IMediator mediator, IMapper mapper)
         : base(mediator, mapper)
     {
     }
