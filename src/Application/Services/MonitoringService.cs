@@ -5,7 +5,7 @@ using Defender.NotificationService.Application.Common.Interfaces;
 using Defender.NotificationService.Application.Common.Interfaces.Repositories;
 using Defender.NotificationService.Domain.Entities;
 
-namespace Defender.NotificationService.Infrastructure.Services;
+namespace Defender.NotificationService.Application.Services;
 
 public class MonitoringService : IMonitoringService
 {

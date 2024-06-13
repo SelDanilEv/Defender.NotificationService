@@ -8,24 +8,14 @@ using Defender.NotificationService.Application.Models;
 using Defender.NotificationService.Domain.Entities;
 using Defender.NotificationService.Domain.Enum;
 
-namespace Defender.NotificationService.Infrastructure.Services;
+namespace Defender.NotificationService.Application.Services;
 
-public class NotificationService : INotificationService
-{
-    private readonly IEmailService _emailService;
-    private readonly INotificationRepository _notificationRepository;
-    private readonly IMapper _mapper;
-
-    public NotificationService(
+public class NotificationService(
         INotificationRepository notificationRepository,
         IEmailService emailService,
-        IMapper mapper)
-    {
-        _emailService = emailService;
-        _notificationRepository = notificationRepository;
-        _mapper = mapper;
-    }
-
+        IMapper mapper) 
+    : INotificationService
+{
     public async Task<NotificationResponse> SendNotificationAsync(NotificationRequest request)
     {
         var response = new NotificationResponse();
@@ -33,7 +23,7 @@ public class NotificationService : INotificationService
         var notification = Notification.InitEmailNotificaton();
         notification.FillNotificatonData(request.Recipient, request.Subject, request.Body);
 
-        await _notificationRepository.CreateNotificationAsync(notification);
+        await notificationRepository.CreateNotificationAsync(notification);
 
         var updateRequest = UpdateModelRequest<Notification>
             .Init(notification);
@@ -45,7 +35,7 @@ public class NotificationService : INotificationService
             switch (request.Type)
             {
                 case NotificationType.Email:
-                    externalNotificationId = await _emailService.SendEmailAsync(request);
+                    externalNotificationId = await emailService.SendEmailAsync(request);
                     break;
                 case NotificationType.SMS:
                     break;
@@ -63,10 +53,10 @@ public class NotificationService : INotificationService
         }
         finally
         {
-            await _notificationRepository.UpdateNotificationAsync(notification.Id, updateRequest);
+            await notificationRepository.UpdateNotificationAsync(notification.Id, updateRequest);
         }
 
 
-        return _mapper.Map<NotificationResponse>(notification);
+        return mapper.Map<NotificationResponse>(notification);
     }
 }

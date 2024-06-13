@@ -2,6 +2,7 @@
 using Defender.NotificationService.Application.Common.Interfaces;
 using Defender.NotificationService.Application.Models;
 using FluentValidation;
+using Defender.Common.Extension;
 using MediatR;
 
 namespace Defender.NotificationService.Application.Modules.Notifications.Commands;
@@ -18,17 +19,20 @@ public sealed class SendPureEmailCommandValidator : AbstractValidator<SendPureEm
     public SendPureEmailCommandValidator()
     {
         RuleFor(s => s.RecipientEmail)
-                  .NotEmpty().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_EmptyRecipient))
-                  .EmailAddress().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_InvalidEmail));
+            .NotEmpty().WithMessage(ErrorCode.VL_NTF_EmptyRecipient)
+            .EmailAddress().WithMessage(ErrorCode.VL_NTF_InvalidEmail);
 
         RuleFor(s => s.Subject)
-                  .NotEmpty().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_EmptySubject))
-                  .MinimumLength(ValidationConstants.MinSubjectLength).WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_MinSubjectLength))
-                  .MaximumLength(ValidationConstants.MaxSubjectLength).WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_MaxSubjectLength));
+            .NotEmpty().WithMessage(ErrorCode.VL_NTF_EmptySubject)
+            .MinimumLength(ValidationConstants.MinSubjectLength)
+            .WithMessage(ErrorCode.VL_NTF_MinSubjectLength)
+            .MaximumLength(ValidationConstants.MaxSubjectLength)
+            .WithMessage(ErrorCode.VL_NTF_MaxSubjectLength);
 
         RuleFor(s => s.Body)
-                  .NotEmpty().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_EmptyBody))
-                  .MinimumLength(ValidationConstants.MaxBodyLength).WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_MaxBodyLength));
+            .NotEmpty().WithMessage(ErrorCode.VL_NTF_EmptyBody)
+            .MinimumLength(ValidationConstants.MaxBodyLength)
+            .WithMessage(ErrorCode.VL_NTF_MaxBodyLength);
     }
 }
 

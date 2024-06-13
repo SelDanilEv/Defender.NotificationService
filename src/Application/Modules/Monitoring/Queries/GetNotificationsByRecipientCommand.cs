@@ -4,6 +4,7 @@ using Defender.Common.Errors;
 using Defender.NotificationService.Application.Common.Interfaces;
 using Defender.NotificationService.Domain.Entities;
 using FluentValidation;
+using Defender.Common.Extension;
 using MediatR;
 
 namespace Defender.NotificationService.Application.Modules.Monitoring.Queries;
@@ -18,7 +19,8 @@ public sealed class GetNotificationsByRecipientQueryValidator : AbstractValidato
     public GetNotificationsByRecipientQueryValidator()
     {
         RuleFor(s => s.Recipient)
-                  .NotEmpty().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_EmptyRecipient));
+            .NotEmpty()
+            .WithMessage(ErrorCode.VL_NTF_EmptyRecipient);
     }
 }
 

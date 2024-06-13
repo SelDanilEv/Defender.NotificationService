@@ -1,9 +1,9 @@
-﻿using Defender.Common.Exstension;
+﻿using Defender.Common.Extension;
 using Defender.NotificationService.Application.Configuration.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Defender.NotificationService.Application.Configuration.Exstension;
+namespace Defender.NotificationService.Application.Configuration.Extension;
 
 public static class ServiceOptionsExtensions
 {

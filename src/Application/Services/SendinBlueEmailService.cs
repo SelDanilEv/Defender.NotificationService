@@ -4,20 +4,14 @@ using Defender.NotificationService.Application.Configuration.Options;
 using Defender.NotificationService.Application.Models;
 using Microsoft.Extensions.Options;
 
-namespace Defender.NotificationService.Infrastructure.Services;
+namespace Defender.NotificationService.Application.Services;
 
-public class SendinBlueEmailService : IEmailService
-{
-    private readonly IEmailServiceWrapper _emailServiceWrapper;
-    private readonly NotificationSettingOptions _settings;
-
-    public SendinBlueEmailService(
+public class SendinBlueEmailService(
         IOptions<NotificationSettingOptions> settings,
-        IEmailServiceWrapper emailServiceWrapper)
-    {
-        _settings = settings.Value;
-        _emailServiceWrapper = emailServiceWrapper;
-    }
+        IEmailServiceWrapper emailServiceWrapper) 
+    : IEmailService
+{
+    private readonly NotificationSettingOptions _settings = settings.Value;
 
     public async Task<string> SendEmailAsync(NotificationRequest request)
     {
@@ -25,7 +19,7 @@ public class SendinBlueEmailService : IEmailService
 
         if (!_settings.SendFakeEmail)
         {
-            externalNotificationId = await _emailServiceWrapper.SendPlaintextEmailAsync(
+            externalNotificationId = await emailServiceWrapper.SendPlaintextEmailAsync(
                 request.Recipient,
                 request.Subject,
                 request.Body);

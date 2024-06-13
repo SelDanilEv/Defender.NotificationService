@@ -1,14 +1,12 @@
 ﻿using System.Net.Http.Headers;
 using System.Reflection;
-using Defender.NotificationService.Application.Common.Interfaces;
 using Defender.NotificationService.Application.Common.Interfaces.Repositories;
 using Defender.NotificationService.Application.Common.Interfaces.Wrapper;
 using Defender.NotificationService.Application.Configuration.Options;
+using Defender.NotificationService.Application.Helpers.LocalSecretHelper;
 using Defender.NotificationService.Infrastructure.Clients.SendinBlueClient;
 using Defender.NotificationService.Infrastructure.Clients.ServiceClient.Generated;
-using Defender.NotificationService.Infrastructure.Helpers.LocalSecretHelper;
 using Defender.NotificationService.Infrastructure.Repositories.Notifications;
-using Defender.NotificationService.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -22,7 +20,6 @@ public static class ConfigureServices
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         services
-            .RegisterServices()
             .RegisterRepositories()
             .RegisterApiClients(configuration)
             .RegisterClientWrappers();
@@ -33,15 +30,6 @@ public static class ConfigureServices
     private static IServiceCollection RegisterClientWrappers(this IServiceCollection services)
     {
         services.AddTransient<IEmailServiceWrapper, SendinBlueServiceWrapper>();
-
-        return services;
-    }
-
-    private static IServiceCollection RegisterServices(this IServiceCollection services)
-    {
-        services.AddTransient<INotificationService, Services.NotificationService>();
-        services.AddTransient<IEmailService, SendinBlueEmailService>();
-        services.AddTransient<IMonitoringService, MonitoringService>();
 
         return services;
     }

@@ -2,6 +2,7 @@
 using Defender.NotificationService.Application.Common.Interfaces;
 using Defender.NotificationService.Application.Models;
 using FluentValidation;
+using Defender.Common.Extension;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 
@@ -19,8 +20,10 @@ public sealed class SendVerificationEmailCommandValidator : AbstractValidator<Se
     public SendVerificationEmailCommandValidator()
     {
         RuleFor(s => s.RecipientEmail)
-                  .NotEmpty().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_EmptyRecipient))
-                  .EmailAddress().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_InvalidEmail));
+            .NotEmpty()
+            .WithMessage(ErrorCode.VL_NTF_EmptyRecipient)
+            .EmailAddress()
+            .WithMessage(ErrorCode.VL_NTF_InvalidEmail);
     }
 }
 

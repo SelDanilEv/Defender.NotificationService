@@ -3,6 +3,7 @@ using Defender.Common.Errors;
 using Defender.NotificationService.Application.Common.Interfaces;
 using Defender.NotificationService.Domain.Entities;
 using FluentValidation;
+using Defender.Common.Extension;
 using MediatR;
 
 namespace Defender.NotificationService.Application.Modules.Monitoring.Queries;
@@ -17,7 +18,8 @@ public sealed class GetNotificationsByIdQueryValidator : AbstractValidator<GetNo
     public GetNotificationsByIdQueryValidator()
     {
         RuleFor(s => s.NotificationId)
-                  .NotEmpty().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_NTF_EmptyNotificationId));
+            .NotEmpty()
+            .WithMessage(ErrorCode.VL_NTF_EmptyNotificationId);
     }
 }
 
