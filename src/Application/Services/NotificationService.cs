@@ -2,8 +2,8 @@
 using Defender.Common.DB.Model;
 using Defender.Common.Errors;
 using Defender.Common.Exceptions;
-using Defender.NotificationService.Application.Common.Interfaces;
 using Defender.NotificationService.Application.Common.Interfaces.Repositories;
+using Defender.NotificationService.Application.Common.Interfaces.Services;
 using Defender.NotificationService.Application.Models;
 using Defender.NotificationService.Domain.Entities;
 using Defender.NotificationService.Domain.Enum;
@@ -13,7 +13,7 @@ namespace Defender.NotificationService.Application.Services;
 public class NotificationService(
         INotificationRepository notificationRepository,
         IEmailService emailService,
-        IMapper mapper) 
+        IMapper mapper)
     : INotificationService
 {
     public async Task<NotificationResponse> SendNotificationAsync(NotificationRequest request)

@@ -1,6 +1,6 @@
 ﻿using Defender.NotificationService.Application.Models;
 
-namespace Defender.NotificationService.Application.Common.Interfaces;
+namespace Defender.NotificationService.Application.Common.Interfaces.Services;
 
 public interface IEmailService
 {

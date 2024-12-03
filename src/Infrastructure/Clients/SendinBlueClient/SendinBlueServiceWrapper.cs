@@ -2,7 +2,7 @@
 using Defender.Common.Wrapper;
 using Defender.NotificationService.Application.Common.Interfaces.Wrapper;
 using Defender.NotificationService.Application.Configuration.Options;
-using Defender.NotificationService.Infrastructure.Clients.ServiceClient.Generated;
+using Defender.NotificationService.Infrastructure.Clients.SendinBlueClient.Generated;
 using Microsoft.Extensions.Options;
 
 namespace Defender.NotificationService.Infrastructure.Clients.SendinBlueClient;

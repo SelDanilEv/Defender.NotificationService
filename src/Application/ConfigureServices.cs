@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Defender.NotificationService.Application.Common.Interfaces;
+using Defender.NotificationService.Application.Common.Interfaces.Services;
 using Defender.NotificationService.Application.Services;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;

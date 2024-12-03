@@ -1,4 +1,4 @@
-﻿using Defender.NotificationService.Application.Common.Interfaces;
+﻿using Defender.NotificationService.Application.Common.Interfaces.Services;
 using Defender.NotificationService.Application.Common.Interfaces.Wrapper;
 using Defender.NotificationService.Application.Configuration.Options;
 using Defender.NotificationService.Application.Models;
@@ -8,7 +8,7 @@ namespace Defender.NotificationService.Application.Services;
 
 public class SendinBlueEmailService(
         IOptions<NotificationSettingOptions> settings,
-        IEmailServiceWrapper emailServiceWrapper) 
+        IEmailServiceWrapper emailServiceWrapper)
     : IEmailService
 {
     private readonly NotificationSettingOptions _settings = settings.Value;

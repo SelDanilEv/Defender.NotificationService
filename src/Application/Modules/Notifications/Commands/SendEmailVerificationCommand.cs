@@ -1,8 +1,8 @@
 ﻿using Defender.Common.Errors;
-using Defender.NotificationService.Application.Common.Interfaces;
+using Defender.Common.Extension;
+using Defender.NotificationService.Application.Common.Interfaces.Services;
 using Defender.NotificationService.Application.Models;
 using FluentValidation;
-using Defender.Common.Extension;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 

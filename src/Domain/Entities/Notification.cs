@@ -7,7 +7,8 @@ namespace Defender.NotificationService.Domain.Entities;
 
 public class Notification : IBaseModel
 {
-
+    [BsonId]
+    [BsonRepresentation(BsonType.String)]
     public Guid Id { get; set; }
 
     [BsonRepresentation(BsonType.String)]

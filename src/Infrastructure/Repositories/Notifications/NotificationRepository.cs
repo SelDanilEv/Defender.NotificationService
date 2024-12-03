@@ -31,7 +31,7 @@ public class NotificationRepository : BaseMongoRepository<Notification>, INotifi
 
     public async Task UpdateNotificationAsync(Guid id, UpdateModelRequest<Notification> updateModelRequest)
     {
-        var filter = this.CreateIdFilter(id);
+        var filter = CreateIdFilter(id);
 
         var updateDefinition = updateModelRequest.BuildUpdateDefinition();
 

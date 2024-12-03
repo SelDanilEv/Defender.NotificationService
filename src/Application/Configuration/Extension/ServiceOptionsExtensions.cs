@@ -1,5 +1,4 @@
-﻿using Defender.Common.Extension;
-using Defender.NotificationService.Application.Configuration.Options;
+﻿using Defender.NotificationService.Application.Configuration.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

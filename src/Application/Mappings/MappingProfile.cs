@@ -3,7 +3,7 @@ using Defender.Common.Mapping;
 using Defender.NotificationService.Application.Models;
 using Defender.NotificationService.Domain.Entities;
 
-namespace Defender.NotificationService.Application.Common.Mappings;
+namespace Defender.NotificationService.Application.Mappings;
 
 public class MappingProfile : BaseMappingProfile
 {

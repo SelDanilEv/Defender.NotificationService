@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Defender.Common.DB.Model;
 using Defender.Common.DB.Pagination;
-using Defender.NotificationService.Application.Common.Interfaces;
 using Defender.NotificationService.Application.Common.Interfaces.Repositories;
+using Defender.NotificationService.Application.Common.Interfaces.Services;
 using Defender.NotificationService.Domain.Entities;
 
 namespace Defender.NotificationService.Application.Services;
@@ -26,7 +26,7 @@ public class MonitoringService : IMonitoringService
     }
 
     public async Task<PagedResult<Notification>> GetNotificationsByRecipientAsync(
-        PaginationRequest paginationRequest, 
+        PaginationRequest paginationRequest,
         string recipient)
     {
         var settings = PaginationSettings<Notification>
@@ -34,8 +34,8 @@ public class MonitoringService : IMonitoringService
 
         var filterRequest = FindModelRequest<Notification>
             .Init(x => x.Recipient, recipient)
-            .Sort(x=> x.CreatedDate, SortType.Desc);
-        
+            .Sort(x => x.CreatedDate, SortType.Desc);
+
         settings.SetupFindOptions(filterRequest);
 
         return await _notificationRepository.GetNotificationsAsync(settings);

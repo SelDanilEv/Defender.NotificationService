@@ -1,14 +1,14 @@
-﻿using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using System.Threading.Tasks;
-using Defender.NotificationService.Application.Models;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using Defender.Common.Attributes;
 using Defender.Common.Consts;
+using Defender.NotificationService.Application.Models;
 using Defender.NotificationService.Application.Modules.Notifications.Commands;
+using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Defender.NotificationService.WebApi.Controllers.V1;
+namespace WebApi.Controllers.V1;
 
 public class NotificationController : BaseApiController
 {

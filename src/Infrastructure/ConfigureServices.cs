@@ -5,7 +5,7 @@ using Defender.NotificationService.Application.Common.Interfaces.Wrapper;
 using Defender.NotificationService.Application.Configuration.Options;
 using Defender.NotificationService.Application.Helpers.LocalSecretHelper;
 using Defender.NotificationService.Infrastructure.Clients.SendinBlueClient;
-using Defender.NotificationService.Infrastructure.Clients.ServiceClient.Generated;
+using Defender.NotificationService.Infrastructure.Clients.SendinBlueClient.Generated;
 using Defender.NotificationService.Infrastructure.Repositories.Notifications;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
